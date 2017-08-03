@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+from django.core.urlresolvers import reverse
 
 
 class PublishedManager(models.Manager):
@@ -37,3 +38,11 @@ class Post(models.Model):
 
     def __unicode__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('blog:post_detail',
+                        args=[self.published_date.year,
+                              self.published_date.strftime('%m'),
+                              self.published_date.strftime('%d'),
+                              self.slug]
+        )
