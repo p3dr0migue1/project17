@@ -1,13 +1,14 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from django.db.models import Count
 from django.core.mail import send_mail
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView
 
-from .models import Post
-from .forms import EmailPostForm
+from .models import Post, Comment
+from .forms import EmailPostForm, CommentForm
 
 
 def post_list(request):
@@ -43,7 +44,33 @@ def post_detail(request, year, month, day, post):
                              published_date__year=year,
                              published_date__month=month,
                              published_date__day=day)
-    context = {'post': post}
+
+    comments = post.comments.filter(active=True)
+
+    if request.method == 'POST':
+        comment_form = CommentForm(data=request.POST)
+
+        if comment_form.is_valid():
+            new_comment = comment_form.save(commit=False)
+            # assign the current post to the comment
+            new_comment.post = post
+            # save the comment to the database
+            new_comment.save()
+            comment_form = CommentForm()
+    else:
+        comment_form = CommentForm()
+
+    context = {
+        'post': post,
+        'comments': comments,
+        'comment_form': comment_form
+    }
+
+    # posts by similarity
+    # post_tags_ids = post.tags.values_lists('id',flat=True)
+    # similar_posts = Post.published.filter(tags__in=post_tags_ids).exclude(id=post.id)
+    # similar_posts = similar_posts.annotate(same_tags=Count('tags')).order_by('-same_tags', '-published_date')[:4]
+
 
     return render(request, 'blog/post/post_detail.html', context)
 
