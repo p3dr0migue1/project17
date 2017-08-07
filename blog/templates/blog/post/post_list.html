@@ -1,4 +1,5 @@
 {% extends "blog/base.html" %}
+{% load blog_tags %}
 
 {% block title %}Blog Posts List{% endblock title %}
 
@@ -8,7 +9,7 @@
 {% for post in posts %}
     <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
     <p class="date">Published {{ post.published_date }} by {{ post.author }}</p>
-    {{ post.content|truncatewords:30|linebreaks}}
+    {{ post.content|markdown|truncatewords_html:30 }}
 {% endfor %}
 
 {% include "pagination.html" with page=page_obj %}
