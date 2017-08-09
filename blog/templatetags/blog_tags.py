@@ -33,4 +33,6 @@ def get_most_commented_posts(count=2):
 
 @register.filter(name='markdown')
 def markdown_format(text):
-    return mark_safe(markdown.markdown(text))
+    return mark_safe(
+        markdown.markdown(text, ["markdown.extensions.extra", "codehilite"])
+    )
