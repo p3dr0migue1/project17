@@ -111,9 +111,9 @@ def post_search(request):
             # count total results
             total_results = results.count()
         return render(request,
-                      'blog/post/post_search.html',
+                      'blog/base.html',
                       {'form': form,
                        'cd': cd,
                        'results': results,
                        'total_results': total_results})
-    return render(request, 'blog/post/post_search.html', {'form': form})
+    return render(request, 'blog/base.html', {'form': form})
