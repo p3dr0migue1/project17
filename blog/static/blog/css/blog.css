@@ -1,0 +1,15 @@
+#main {
+    margin: 0 auto;
+    width: 80%;
+    overflow: hidden;
+}
+
+#content {
+    width: 60%;
+    float: left;
+}
+
+#sidebar {
+    width: 35%;
+    float: right;
+}
