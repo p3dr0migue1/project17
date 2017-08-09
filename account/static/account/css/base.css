@@ -40,15 +40,13 @@ ol {
     font-size:14px;
     background:#12c064;
     color:#fff;
-    border-bottom:4px solid #1cdf78;
     overflow:auto;
 }
 
 #header .logo {
-    font-family: 'Muli', sans-serif;
     float:left;
-    color:#f3f7cc;
-    font-size:20px;
+    color:#FFFFFF;
+    font-size:35px;
     margin-right:10%;
 }
 
