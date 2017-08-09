@@ -1,0 +1,44 @@
+[
+    {
+        "fields": {
+            "status": "published",
+            "updated": "2017-08-09T15:18:03.860Z",
+            "author": 1,
+            "created": "2017-08-09T14:15:27.587Z",
+            "content": "To stash only one of multiple changed files you can use:\r\n\r\n```\r\n:::bash\r\ngit stash -p\r\n```\r\nThis command allows you to select which hunks should be added to stash, whole files can be selected as well.\r\n\r\nYou'll be prompted with a few actions for each hunk:\r\n\r\n    y - stash this hunk\r\n    n - do not stash this hunk\r\n    q - quit; do not stash this hunk or any of the remaining ones\r\n    a - stash this hunk and all later hunks in the file\r\n    d - do not stash this hunk or any of the later hunks in the file\r\n    g - select a hunk to go to\r\n    / - search for a hunk matching the given regex\r\n    j - leave this hunk undecided, see next undecided hunk\r\n    J - leave this hunk undecided, see next hunk\r\n    k - leave this hunk undecided, see previous undecided hunk\r\n    K - leave this hunk undecided, see previous hunk\r\n    s - split the current hunk into smaller hunks\r\n    e - manually edit the current hunk\r\n    ? - print help\r\n",
+            "published_date": "2017-08-09T14:14:11Z",
+            "title": "How to stash only one of multiple files changed?",
+            "slug": "how-stash-only-one-multiple-files-changed"
+        },
+        "model": "blog.post",
+        "pk": 1
+    },
+    {
+        "fields": {
+            "status": "published",
+            "updated": "2017-08-09T14:16:20.282Z",
+            "author": 1,
+            "created": "2017-08-09T14:16:20.282Z",
+            "content": "    # Start PostgreSQL (Ubuntu)\r\n    sudo -u postgres psql\r\n\r\n    # Start PostgreSQL (Server)\r\n    psql -h host_id -p port_number -U username database_name\r\n",
+            "published_date": "2017-08-09T14:15:27Z",
+            "title": "How to start PostgreSQL",
+            "slug": "how-start-postgresql"
+        },
+        "model": "blog.post",
+        "pk": 2
+    },
+    {
+        "fields": {
+            "status": "published",
+            "updated": "2017-08-09T14:18:00.895Z",
+            "author": 1,
+            "created": "2017-08-09T14:18:00.895Z",
+            "content": "    class TrainingSessionForm(forms.ModelForm):\r\n        start_date = forms.DateTimeField(\r\n            widget=DateTimeInput(\r\n                format='%d/%m/%Y %H:%M',\r\n                attrs={'placeholder': 'DD/MM/YYYY HH:MM'}),\r\n            input_formats=['%d/%m/%Y %H:%M']\r\n\r\n        )\r\n\r\n        def __init__(self, data=None, company=None, *args, **kwargs):\r\n            super(TrainingSessionForm, self).__init__(data, *args, **kwargs)\r\n            instance = getattr(self, 'instance', None)\r\n\r\n            if instance and instance.id:\r\n                self.fields['start_date'].widget.attrs['readonly'] = True\r\n\r\n        def clean_start_date(self):\r\n            if self.instance.start_date:\r\n                return self.instance.start_date.strftime('%Y-%m-%d %H:%M')\r\n            else:\r\n                return self.cleaned_data['start_date']",
+            "published_date": "2017-08-09T14:16:20Z",
+            "title": "Django required read only form fields",
+            "slug": "django-required-read-only-form-fields"
+        },
+        "model": "blog.post",
+        "pk": 3
+    }
+]
