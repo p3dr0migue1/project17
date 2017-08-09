@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sitemaps',
     'haystack',
     'blog',
-    'account'
+    'account',
 ]
 
 MIDDLEWARE_CLASSES = [
