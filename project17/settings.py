@@ -34,6 +34,8 @@ SITE_ID = 2
 # Application definition
 
 INSTALLED_APPS = [
+    'account',
+    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -43,8 +45,6 @@ INSTALLED_APPS = [
     'django.contrib.sitemaps',
     'haystack',
     'blog',
-    'account',
-    'django.contrib.admin',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -135,6 +135,8 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
     '/var/www/static/',
 )
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'pcurad01@gmail.com'
