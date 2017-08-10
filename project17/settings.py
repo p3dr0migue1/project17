@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 
+from django.core.urlresolvers import reverse_lazy
+
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -31,7 +34,6 @@ SITE_ID = 2
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -42,6 +44,7 @@ INSTALLED_APPS = [
     'haystack',
     'blog',
     'account',
+    'django.contrib.admin',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -118,6 +121,10 @@ USE_L10N = True
 
 USE_TZ = True
 
+# account app redirects
+LOGIN_REDIRECT_URL = reverse_lazy('account:dashboard')
+LOGIN_URL = reverse_lazy('account:login')
+LOGOUT_URL = reverse_lazy('account:logout')
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
