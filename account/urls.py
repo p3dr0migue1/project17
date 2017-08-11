@@ -11,6 +11,9 @@ from . import views
 urlpatterns = [
     url(r'^$', views.dashboard, name='dashboard'),
 
+    # registration urls
+    url(r'^register/$', views.register, name='register'),
+
     # login & logout urls
     url(r'^login/$', login, name='login'),
     url(r'^logout/$', logout, name='logout'),
