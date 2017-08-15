@@ -11,6 +11,9 @@ from . import views
 urlpatterns = [
     url(r'^$', views.dashboard, name='dashboard'),
 
+    # user editing
+    url(r'^edit/$', views.edit, name='edit'),
+
     # registration urls
     url(r'^register/$', views.register, name='register'),
 
