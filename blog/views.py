@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 from django.db.models import Count
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, get_object_or_404
@@ -40,6 +41,7 @@ class PostListView(LoginRequiredMixin, ListView):
     template_name = 'blog/post/post_list.html'
 
 
+@login_required
 def post_detail(request, year, month, day, post):
     post = get_object_or_404(Post,
                              slug=post,
