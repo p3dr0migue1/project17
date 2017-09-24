@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db.models import Count
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.mail import send_mail
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, get_object_or_404
@@ -32,7 +33,7 @@ def post_list(request):
     return render(request, 'blog/post/post_list.html', context)
 
 
-class PostListView(ListView):
+class PostListView(LoginRequiredMixin, ListView):
     queryset = Post.published.all()
     context_object_name = 'posts'
     paginate_by = 3
