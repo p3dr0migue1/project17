@@ -1,0 +1,37 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Project17{% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    {% block extra_css %}
+    {% endblock extra_css %}
+</head>
+<body>
+    <div id="header">
+        <span class="logo"><a href="{% url 'blog:post_list' %}">Project17</a></span>
+            {% if request.user.is_authenticated %}
+                <ul class="menu">
+                    <li {% if section == 'dashboard' %}class="selected"{% endif %}>
+                        <a href="{% url 'account:dashboard' %}">My Dashboard</a>
+                    </li>
+                    <li {% if section == 'images' %}class="selected"{% endif %}>
+                        <a href="#">Images</a>
+                    </li>
+                    <li {% if section == 'people' %}class="selected"{% endif %}>
+                        <a href="#">People</a>
+                    </li>
+                </ul>
+            {% endif %}
+        <span class="user">
+            {% if request.user.is_authenticated %}
+                Hello {{ request.user.first_name }}, <a href="{% url 'account:logout' %}">Logout</a>
+            {% else %}
+                <a href="{% url 'account:login' %}">Login</a>
+            {% endif %}
+        </span>
+    </div>
+    {% block main %}
+    {% endblock main %}
+</body>
+</html>
