@@ -62,10 +62,13 @@ ol {
 }
 
 #header ul.menu li.selected a, #header ul.menu li.selected a:hover {
-    color: #FFFFFF;
+    color: #253E4B;
     font-weight: bold;
     font-size: 18px;
-    border-bottom: 5px solid #FFFFFF;
+}
+
+#header .logo a {
+    font-size: 35px;
 }
 
 #header a {

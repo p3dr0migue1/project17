@@ -7,7 +7,7 @@
 </head>
 <body>
     <div id="header">
-        <span class="logo">Project17</span>
+        <span class="logo"><a href="{% url 'blog:post_list' %}">Project17</a></span>
         {% if request.user.is_authenticated %}
             <ul class="menu">
                 <li {% if section == 'dashboard' %}class="selected"{% endif %}>
