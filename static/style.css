@@ -1,0 +1,81 @@
+@import url(http://fonts.googleapis.com/css?family=Muli);
+
+p {
+    line-height: 1.8;
+}
+
+
+h1, h2, h3, h4, h5 , h6 { font-family: 'Muli', sans-serif; font-weight:normal; }
+
+h1 {
+    border-bottom:1px solid #bbb;
+    padding:0 0 10px 0;
+    margin:10px 0 20px 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: helvetica, sans-serif;
+}
+
+a {
+    color: #5B846E;
+    text-decoration: none;
+}
+
+a:hover {
+    color:#00a74f;
+}
+
+#header {
+    padding: 10px 100px;
+    font-size: 14px;
+    background: #5B846E;
+    color: #FFFFFF;
+    overflow: auto;
+}
+
+#header .logo {
+    float: left;
+    color: #FFFFFF;
+    font-size: 35px;
+    margin-right: 10%;
+}
+
+#header ul.menu {
+    list-style: none;
+    float: left;
+    margin: 0;
+    padding: 0;
+}
+#header ul.menu li {
+    float: left;
+    padding: 4px 10px;
+}
+
+#header ul.menu li.selected a, #header ul.menu li.selected a:hover {
+    color: #253E4B;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+#header .logo a {
+    font-size: 35px;
+}
+
+#header a {
+    color: #FFFFFF;
+    font-size: 18px;
+}
+
+#header a:hover {
+    color: #FFFFFF;
+}
+
+#header .user {
+    float: right;
+    padding-top: 4px;
+    font-size: 18px;
+    font-weight: 500;
+}
