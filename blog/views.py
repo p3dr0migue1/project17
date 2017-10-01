@@ -35,10 +35,17 @@ def post_list(request):
 
 
 class PostListView(LoginRequiredMixin, ListView):
-    queryset = Post.published.all()
-    context_object_name = 'posts'
+    model = Post
     paginate_by = 3
     template_name = 'blog/post/post_list.html'
+
+    def get_queryset(self):
+        return Post.published.all()
+
+    def get_context_data(self, **kwargs):
+        context = super(PostListView, self).get_context_data(**kwargs)
+        context['section'] = 'blog'
+        return context
 
 
 @login_required
