@@ -12,6 +12,9 @@
         <span class="logo"><a href="{% url 'blog:post_list' %}">Project17</a></span>
             {% if request.user.is_authenticated %}
                 <ul class="menu">
+                    <li {% if section == 'blog' %}class="selected"{% endif %}>
+                        <a href="{% url 'blog:post_list' %}">Blog</a>
+                    </li>
                     <li {% if section == 'dashboard' %}class="selected"{% endif %}>
                         <a href="{% url 'account:dashboard' %}">My Dashboard</a>
                     </li>

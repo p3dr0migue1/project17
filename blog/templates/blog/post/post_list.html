@@ -1,11 +1,11 @@
-{% extends "blog/base.html" %}
+{% extends "blog/post/main.html" %}
 {% load blog_tags %}
 
 {% block title %}Blog Posts List{% endblock title %}
 
 {% block content %}
 
-{% for post in posts %}
+{% for post in post_list %}
     <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
     <p class="date">Published {{ post.published_date }} by {{ post.author }}</p>
     {{ post.content|markdown|truncatewords_html:30 }}

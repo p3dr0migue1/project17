@@ -1,16 +1,16 @@
+{% extends "base.html" %}
 {% load blog_tags %}
 {% load staticfiles %}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>{% block title %}Project17{% endblock title %}</title>
+
+{% block extra_css %}
     <link rel="stylesheet" href="{% static 'blog/css/blog.css' %}">
     <link rel="stylesheet" href="{% static 'blog/css/codehilite.css' %}">
-</head>
-<body>
+{% endblock extra_css %}
+
+{% block main %}
     <div id="main">
         <div id="content">
-            <h1><a href="{% url 'blog:post_list' %}">Project17</a></h1>
+            <h1>Blog</h1>
             <div id="search">
                 <form action="/blog/search/" method="get">
                     <input type="text" name="query">
@@ -50,5 +50,4 @@
             </ul>
         </div>
     </div>
-</body>
-</html>
+{% endblock main %}
