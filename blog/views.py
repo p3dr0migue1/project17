@@ -15,25 +15,6 @@ from .models import Post, Comment
 from .forms import EmailPostForm, CommentForm, SearchForm
 
 
-def post_list(request):
-    object_list = Post.published.all()
-    paginator = Paginator(object_list, 3)  # 3 posts per page
-    page = request.GET.get('page')
-
-    try:
-        posts = paginator.page(page)
-    except PageNotAnInteger:
-        # if page is not an integer deliver the first page
-        posts = paginator.page(1)
-    except EmptyPage:
-        # if page is out of range deliver last page of results
-        posts = paginator.page(paginator.num_pages)
-
-    context = {'page': page, 'posts': posts}
-
-    return render(request, 'blog/post/post_list.html', context)
-
-
 class PostListView(LoginRequiredMixin, ListView):
     model = Post
     paginate_by = 3
