@@ -28,7 +28,9 @@ def show_latest_posts(count=3):
 # Assignment Tags are like Simple Tags but they store the result in a variable
 @register.assignment_tag
 def get_most_commented_posts(count=2):
-    return Post.published.annotate(total_comments=Count('comments')).order_by('-total_comments')[:count]
+    return Post.published.annotate(total_comments=Count('comments'))\
+                         .filter(total_comments__gte=1)\
+                         .order_by('-total_comments')[:count]
 
 
 @register.filter(name='markdown')

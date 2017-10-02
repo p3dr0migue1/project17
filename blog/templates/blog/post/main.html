@@ -41,13 +41,15 @@
             <h3>Latest Posts</h3>
             {% show_latest_posts %}
 
-            <h3>Most commented posts.</h3>
             {% get_most_commented_posts as commented_posts %}
-            <ul>
-                {% for post in commented_posts %}
-                    <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
-                {% endfor %}
-            </ul>
+            {% if commented_posts %}
+                <h3>Most commented posts.</h3>
+                <ul>
+                    {% for post in commented_posts %}
+                        <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
         </div>
     </div>
 {% endblock main %}
