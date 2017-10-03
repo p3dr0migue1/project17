@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.sitemaps',
     'haystack',
     'blog',
+    'social_django',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -154,3 +155,12 @@ HAYSTACK_CONNECTIONS = {
         'URL': 'http://127.0.0.1:8983/solr/blog'
     }
 }
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'account.authentication.EmailAuthBackend',
+    'social_core.backends.facebook.FacebookOAuth2',
+)
+
+SOCIAL_AUTH_FACEBOOK_KEY = '151758762090660'
+SOCIAL_AUTH_FACEBOOK_SECRET = '0bb4c1cc97737d757de300adade62ca0'
