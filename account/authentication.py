@@ -1,5 +1,7 @@
 from django.contrib.auth.models import User
 
+from .models import Profile
+
 
 class EmailAuthBackend(object):
     """
@@ -20,3 +22,12 @@ class EmailAuthBackend(object):
             return User.objects.get(pk=user_id)
         except User.DoesNotExist:
             return None
+
+
+def social_profile(backend, user, response, *args, **kwargs):
+    if backend.name == 'facebook':
+        try:
+            profile = user.profile
+        except AttributeError:
+            profile = Profile(user=user)
+            profile.save()
