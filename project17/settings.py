@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'haystack',
     'blog',
     'social_django',
+    'images',
 ]
 
 MIDDLEWARE_CLASSES = [
