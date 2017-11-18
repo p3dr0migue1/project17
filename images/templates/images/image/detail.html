@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}Bookmark an image{% endblock title %}
+
+{% block main %}
+    <h1>{{ image.title }}</h1>
+    {% load thumbnail %}
+    {% thumbnail image.image "300" as img %}
+        <a href="{{ image.image.url }}">
+            <img src="{{ img.url }}" class="image-detail">
+        </a>
+    {% endthumbnail %}
+    {% with total_likes=image.users_like.count users_like=image.users_like.all %}
+        <div class="image-info">
+            <div>
+                <span class="count">
+                    {{ total_likes }} like{{ total_likes|pluralize }}
+                </span>
+            </div>
+            {{ image.description|linebreaks }}
+        </div>
+
+        <div class="image-likes">
+            {% for user in image.users_like.all %}
+                <div>
+                    <img src="{{ user.profile.photo.url }}">
+                    <p>{{ user.first_name }}</p>
+                </div>
+            {% empty %}
+                Nobody liked this image yet.
+            {% endfor %}
+        </div>
+    {% endwith %}
+{% endblock main %}

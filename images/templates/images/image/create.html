@@ -4,7 +4,10 @@
 
 {% block main %}
     <h1>Bookmark an Image</h1>
-    <img src="{{ request.GET.url }}" class="image-preview">
+    {% load thumbnail %}
+    {% thumbnail request.GET.url "300" as img %}
+        <img src="{{ img.url }}" class="image-detail">
+    {% endthumbnail %}
     <form action="." method="post">
        {% csrf_token %}
        {{ form.as_p }}

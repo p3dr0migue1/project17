@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'blog',
     'social_django',
     'images',
+    'sorl.thumbnail',
 ]
 
 MIDDLEWARE_CLASSES = [
