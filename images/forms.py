@@ -1,4 +1,4 @@
-from urllib3 import request
+import urllib
 
 from django import forms
 from django.core.files.base import ContentFile
@@ -17,7 +17,6 @@ class ImageCreateForm(forms.ModelForm):
         }
 
     def clean_url(self):
-        import ipdb; ipdb.set_trace()
         url = self.cleaned_data['url']
         valid_extensions = ['jpg', 'jpeg']
         extension = url.rsplit('.', 1)[1].lower()
@@ -29,14 +28,13 @@ class ImageCreateForm(forms.ModelForm):
 
     def save(self, force_insert=False, force_update=False, commit=True):
         image = super(ImageCreateForm, self).save(commit=False)
-        import ipdb; ipdb.set_trace()
         image_url = self.cleaned_data['url']
         image_name = '{}.{}'.format(slugify(image.title),
                                     image_url.rsplit('.', 1)[1].lower()
         )
 
         # download image from the given URL
-        response = request.urlopen(image_url)
+        response = urllib.urlopen(image_url)
         image.image.save(image_name,
                          ContentFile(response.read()),
                          save=False)
